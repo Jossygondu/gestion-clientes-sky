@@ -1,1 +1,14 @@
+name: Solicitud de Nueva Función
 
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'new-feature'  # Solo se ejecuta si la etiqueta es "new-feature"
+    steps:
+      - name: Imprimir notificación
+        run: |
+          echo "[SOLICITUD DE NUEVA FUNCIÓN] Título: '${{ github.event.issue.title }}'. Descripción: '${{ github.event.issue.body }}'. Pasando a comité de priorización (DevLead, ITOpsLead, CustServLead). Notificando a todos."
