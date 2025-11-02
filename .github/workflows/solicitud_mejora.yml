@@ -1,1 +1,14 @@
+name: Solicitud de Mejora
 
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'enhancement'  # Solo se ejecuta si la etiqueta es "enhancement"
+    steps:
+      - name: Imprimir notificación
+        run: |
+          echo "[SOLICITUD DE MEJORA RECIBIDA] Título: '${{ github.event.issue.title }}'. Descripción: '${{ github.event.issue.body }}'. Asignando a DevLead para revisión. Notificando a todos los equipos."
