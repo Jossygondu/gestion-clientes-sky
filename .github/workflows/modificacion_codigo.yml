@@ -1,1 +1,13 @@
+name: Modificación de Código
 
+on:
+  push:
+    branches: [ main ]  # Cambia "main" a tu rama principal si es diferente
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Imprimir notificación
+        run: |
+          echo "[MODIFICACIÓN DE CÓDIGO DETECTADA] Commit: ${{ github.sha }} por ${{ github.actor }} en rama ${{ github.ref_name }}. Mensaje: '${{ github.event.head_commit.message }}'. Notificando a DevLead y ITTeam para posible revisión/despliegue."
