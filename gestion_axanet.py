@@ -7,13 +7,14 @@ lista_clientes = []
 # --- Funciones para la gestión de clientes ---
 
 # Crear un nuevo cliente
-def crear_cliente(nombre, tipo, telefono, direccion, servicios):
+def crear_cliente(nombre, tipo, telefono, direccion, correo_electronico, servicios):
     cliente = {
         "id": generar_id_cliente(),
         "nombre": nombre,
         "tipo": tipo,
         "telefono": telefono,
         "direccion": direccion,
+        "correo_electronico": correo_electronico,
         "servicios": servicios,
         "historial_servicios": []
     }
@@ -107,12 +108,13 @@ while True:
             print("Teléfono inválido. Debe tener 10 dígitos.")
             telefono = input("Ingrese el teléfono del cliente: ")
         direccion = input("Ingrese la dirección del cliente: ")
+        correo_electronico = input("Ingrese el correo electrónico del cliente: ")  # Agregamos la entrada para el correo electrónico
         servicios = input("Ingrese los servicios contratados (separados por comas): ").split(",")
 
-        nuevo_cliente = crear_cliente(nombre, tipo, telefono, direccion, servicios)
+        nuevo_cliente = crear_cliente(nombre, tipo, telefono, direccion, correo_electronico, servicios)  # Incluimos el correo electrónico al crear el cliente
         lista_clientes.append(nuevo_cliente)
         print("Cliente creado con éxito.")
-        print(f"ID del cliente: {nuevo_cliente['id']}")  # Agregamos esta línea
+        print(f"ID del cliente: {nuevo_cliente['id']}")
 
     elif opcion == "2":
         # Buscar cliente por ID
@@ -183,3 +185,7 @@ while True:
 
     else:
         print("Opción inválida. Por favor, ingrese un número entre 1 y 7.")
+    
+    # Contar cuántos clientes hay registrados
+def contar_clientes(lista_clientes):
+    return len(lista_clientes)
